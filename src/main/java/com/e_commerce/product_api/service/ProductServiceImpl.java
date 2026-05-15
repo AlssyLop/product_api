@@ -21,13 +21,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<ProductResponseDTO> getAllProducts(String search, Pageable pageable) {
-        Page<Product> products;
-        if (search != null && !search.isBlank()) {
-            products = repository.findByCategoryContainingIgnoreCaseOrNameContainingIgnoreCase(search, search, pageable);
-        } else {
-            products = repository.findAll(pageable);
-        }
+    public Page<ProductResponseDTO> getAllProducts(Pageable pageable) {
+        Page<Product> products = repository.findAll(pageable);
         return products.map(this::toResponseDTO);
     }
 

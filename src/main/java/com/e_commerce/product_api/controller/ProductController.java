@@ -25,12 +25,10 @@ public class ProductController {
     }
 
     @GetMapping
-    @Operation(summary = "Listar productos", description = "Obtener lista paginada de productos con opción de búsqueda por nombre o categoría")
+    @Operation(summary = "Listar productos", description = "Obtener lista paginada de productos")
     @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
-    public ResponseEntity<Page<ProductResponseDTO>> getAll(
-            @RequestParam(required = false) String search,
-            Pageable pageable) {
-        return ResponseEntity.ok(service.getAllProducts(search, pageable));
+    public ResponseEntity<Page<ProductResponseDTO>> getAll(@RequestParam(defaultValue = "0") int page) {
+        return ResponseEntity.ok(service.getAllProducts(org.springframework.data.domain.PageRequest.of(page, 10)));
     }
 
     @GetMapping("/{id}")
