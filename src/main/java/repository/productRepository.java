@@ -4,7 +4,7 @@
  */
 package repository;
 
-import product_api.entity.product;
+import entify.product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
