@@ -1,3 +1,5 @@
+package com.e_commerce.product_api.repository;
+
 import com.e_commerce.product_api.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
